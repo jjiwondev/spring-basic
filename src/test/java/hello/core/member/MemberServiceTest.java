@@ -4,15 +4,19 @@ import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberServiceTest {
 
-    MemberService memberService;
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+    MemberService memberService = applicationContext.getBean("memberService", MemberService.class);//첫번째 para는 메소드 이름으로 등록, 두번째 para는 타입
 
     @BeforeEach
     public void beforeEach(){
-        AppConfig appConfig = new AppConfig();
-        memberService = appConfig.memberService();
+//        AppConfig appConfig = new AppConfig();
+//        memberService = appConfig.memberService();
+
     }
 
     @Test
