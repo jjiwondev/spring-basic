@@ -14,18 +14,18 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService(){
-        return new MemberServiceImpl(MemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(MemberRepository(), DiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
-    private static MemoryMemberRepository MemberRepository() {
+    private static MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
     @Bean
-    private static RateDiscountPolicy DiscountPolicy() {
+    private static RateDiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 
